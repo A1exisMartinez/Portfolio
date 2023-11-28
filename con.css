@@ -1,0 +1,240 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bad+Script&family=Borel&family=Bungee&family=Bungee+Spice&family=Nabla&family=Playfair+Display+SC&family=Press+Start+2P&family=Reenie+Beanie&family=Rock+Salt&family=Rubik+80s+Fade&display=swap');
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+header {
+  font-family: "Poppins", sans-serif;
+  min-height: 100vh;
+  background-color: transparent;
+  display: grid;
+  place-items: center;
+  justify-content: center;
+  color: white;
+}
+
+#cards {
+  width: 90%;
+  padding-inline: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.card {
+  min-width: 200px;
+  height: 350px;
+  flex: 1 1 250px;
+  background-color: rgb(255, 255, 255, 0.12);
+  border-radius: 12px;
+  position: relative;
+}
+
+#cards:hover > .card {
+  background: radial-gradient(
+    400px circle at var(--mouse-x) var(--mouse-y),
+    hsl(var(--color) / 1),
+    rgba(255, 255, 255, 0.12) 40%
+  );
+}
+
+.card-content {
+  position: absolute;
+  inset: 1px;
+  background-color: #131315;
+  border-radius: inherit;
+}
+
+.card:nth-child(1) {
+  --color: 348 80% 60%;
+}
+.card:nth-child(2) {
+  --color: 0 0% 100%;
+}
+.card:nth-child(3) {
+  --color: 220 100% 35%;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: radial-gradient(
+    500px circle at var(--mouse-x) var(--mouse-y),
+    hsl(var(--color) / 0.35),
+    transparent 40%
+  );
+  border-radius: inherit;
+  opacity: 0;
+  z-index: 2;
+}
+
+#cards:hover > .card::before {
+  opacity: 1;
+}
+
+a {
+  all: unset;
+  cursor: pointer;
+}
+
+.card-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 18px;
+  align-items: center;
+}
+
+.card-content > i {
+  font-size: 10rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.card-content > p {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.card-content > a {
+  width: 90%;
+  padding-block: 0.8rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  z-index: 10;
+}
+.card-content > a:hover {
+  background-color: rgb(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* the end of the contact content page */
+/* Basic Css needed for all the pages */
+
+
+body { 
+background-image: linear-gradient(to right, #10002b, #240046, #3c096c , #5a189a , #7b2cbf , #9d4edd , #c77dff , #e0aaff );
+background-repeat: no-repeat;
+background-attachment: fixed;
+background-size: cover;
+background-position-x: center;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+nav {
+  font-family: 'Reenie Beanie';
+  display: grid;
+  place-items: center;
+}
+
+button {
+  border: 0;
+  outline: none;
+  background: none;
+}
+
+.menu-btn {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  width: 40px;
+  height: 40px;
+  background-image: url("./src/menu.png");
+  background-size: cover;
+  cursor: pointer;
+  z-index: 3;
+}
+body.open .menu-btn {
+  background-image: url("./src/close.png");
+}
+.menu {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  z-index: 2;
+}
+
+.menu nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  visibility: hidden;
+}
+body.open .menu nav {
+  visibility: visible;
+}
+
+.menu nav a {
+  text-decoration: none;
+  font-size: 55px;
+  font-weight: 900;
+  color: rgb(255, 255, 255);
+  padding: 10px 20px;
+  text-align: center;
+  opacity: 1;
+  transition: 0.25s;
+  font-style: italic;
+  text-decoration: underline;
+}
+body.open .menu a {
+  animation: show 0.3s backwards;
+}
+.menu nav:hover a:not(:hover) {
+  opacity: 0.5;
+}
+
+@keyframes show {
+  0% {
+    opacity: 0;
+    translate: 0 -30px;
+  }
+  100% {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+.backdrop {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  height: 100vh;
+  aspect-ratio: 1/1;
+  translate: -50% -50%;
+  scale: 0;
+  opacity: 0;
+  background-color: rgba(0, 0, 0, 0.829);
+  border-radius: 50%;
+  z-index: 1;
+  transition: all 0.6s;
+}
+body.open .backdrop {
+  opacity: 1;
+  scale: 5;
+}
+
+/* The end of the Nav bar for all the Html/Css Pages*/
